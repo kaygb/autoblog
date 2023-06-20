@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Kodbox-重构版可道云的安装与体验 - 风也雨忆笙</title>
+  
+    <meta name="keywords" content="自建云盘,kodbox">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="风也雨忆笙">
+  
+
+  <!-- import meta -->
+  
+    
+      <meta name='theme-color' content='#FFFFFF'>
+    
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <script data-ad-client='ca-pub-9122002396983323' async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+  <style> @font-face { font-family: 'Fyyys'; src: url('https://cdn.jsdelivr.net/gh/kaygb/blog-images/fonts/YaoSuiXinShouXieTi-2-subfont=fyyys.ttf'); } .post-wrapper { border-bottom: 1px solid #ef577736; } .post-wrapper:hover { border-bottom: 1px solid #ef5777; } .l_main .post{ margin: 0 auto!important; } /*bilibili*/ .bilibili { position: relative; width: 100%; height: 0; padding-bottom: 75%; }
+.bilibili iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } .cover-body  .title{ font-family: Fyyys!important; } .l_header .wrapper .nav-main .title { font-family: Fyyys!important; font-weight:900; font-size: 2rem!important; }
+</style>
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            风也雨忆笙
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cube fa-fw'></i>页面
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/start-page/
+                  
+                  
+                  
+                    id="start-page"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/msg/
+                  
+                  
+                  
+                    id="msg"
+                  >
+                  <i class='fas fa-comment-alt fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/donate/
+                  
+                  
+                  
+                    id="donate"
+                  >
+                  <i class='fas fa-donate fa-fw'></i>捐赠
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cubes fa-fw'></i>站点
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//wiki.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="wikieas1cn"
+                  >
+                  <i class='fab fa-wikipedia-w fa-fw'></i>疯知识
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//zy.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="zyeas1cn"
+                  >
+                  <i class='fas fa-download fa-fw'></i>纸柚网
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.wgb.ink
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:wwwwgbink"
+                  >
+                  <i class='fas fa-dollar-sign fa-fw'></i>旺果帮
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//d.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="deas1cn"
+                  >
+                  <i class='fas fa-link fa-fw'></i>短链密语
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:www170601xyz"
+                  >
+                  <i class='fas fa-fan fa-fw'></i>七六零一
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://pic.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:piceas1cn"
+                  >
+                  <i class='fas fa-image fa-fw'></i>风也图床
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://cloud.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:cloudeas1cn"
+                  >
+                  <i class='fas fa-cloud fa-fw'></i>风也网盘
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://acg.wgb.ink/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:acgwgbink"
+                  >
+                  <i class='fas fa-images fa-fw'></i>随机图片
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-clone fa-fw'></i>项目
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://winds.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:winds170601xyz"
+                  >
+                  WINDS 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://forty.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:forty170601xyz"
+                  >
+                  Forty 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://ease.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:easeeas1cn"
+                  >
+                  EASE 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-microchip fa-fw'></i>管理
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://leancloud-server.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:leancloud-server170601xyz"
+                  >
+                  <i class='fas fa-link fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://status.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:statuseas1cn"
+                  >
+                  <i class='fas fa-server fa-fw'></i>网站监控
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=https://travellings.now.sh/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fas fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="来啊，搜索啊..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cube fa-fw'></i>页面
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/start-page/
+                  
+                  
+                  
+                    id="start-page"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/msg/
+                  
+                  
+                  
+                    id="msg"
+                  >
+                  <i class='fas fa-comment-alt fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/donate/
+                  
+                  
+                  
+                    id="donate"
+                  >
+                  <i class='fas fa-donate fa-fw'></i>捐赠
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cubes fa-fw'></i>站点
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//wiki.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="wikieas1cn"
+                  >
+                  <i class='fab fa-wikipedia-w fa-fw'></i>疯知识
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//zy.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="zyeas1cn"
+                  >
+                  <i class='fas fa-download fa-fw'></i>纸柚网
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.wgb.ink
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:wwwwgbink"
+                  >
+                  <i class='fas fa-dollar-sign fa-fw'></i>旺果帮
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//d.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="deas1cn"
+                  >
+                  <i class='fas fa-link fa-fw'></i>短链密语
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:www170601xyz"
+                  >
+                  <i class='fas fa-fan fa-fw'></i>七六零一
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://pic.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:piceas1cn"
+                  >
+                  <i class='fas fa-image fa-fw'></i>风也图床
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://cloud.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:cloudeas1cn"
+                  >
+                  <i class='fas fa-cloud fa-fw'></i>风也网盘
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://acg.wgb.ink/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:acgwgbink"
+                  >
+                  <i class='fas fa-images fa-fw'></i>随机图片
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-clone fa-fw'></i>项目
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://winds.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:winds170601xyz"
+                  >
+                  WINDS 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://forty.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:forty170601xyz"
+                  >
+                  Forty 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://ease.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:easeeas1cn"
+                  >
+                  EASE 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-microchip fa-fw'></i>管理
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://leancloud-server.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:leancloud-server170601xyz"
+                  >
+                  <i class='fas fa-link fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://status.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:statuseas1cn"
+                  >
+                  <i class='fas fa-server fa-fw'></i>网站监控
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=https://travellings.now.sh/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fas fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/170.html">
+      Kodbox-重构版可道云的安装与体验
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月27日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          
+        
+      </div>
+    
+  </section>
+  
+
+<!-- <hr> -->
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>可道云很多站长应该都使用过，不论是作为一个网盘还是服务器管理器，它都能很好的胜任，并且安装和使用也很简单方便，只需要将程序包上传到解压就可以直接访问使用了。</p>
+<p>近期可道云官网发布了kodexplorer的重构版本：kodbox。它和kodexplorer有很多相似的部分，比如都使用了窗口化的界面，类似win10的流畅动画。但是不同的是kodbox相比kodexplorer来说则更像是一个云盘程序，因为kodbox加入了数据库的支持，并且支持配置第三方云存储。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327101837.png" alt=""></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先下载安装包，目前版本尚未成熟，只能到论坛里面下载预览版，这里我直接贴出来下载链接。</p>
+<p><a href="http://group.kodcloud.com/#s/5clWnwKA" target="_blank" rel="noopener">http://group.kodcloud.com/#s/5clWnwKA</a></p>
+<p>可以看到，新版本增加了PC和安卓客户端。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327095223.png" alt=""></p>
+<p>首先创建一个网站和数据库（以本地环境为演示）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327101438.png" alt=""></p>
+<p>然后将安装包放入文件夹，解压</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327101508.png" alt=""></p>
+<p>然后访问域名会来到安装界面</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327095605.png" alt=""></p>
+<p>然后刷新一下界面，继续我们的安装，配置数据库。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100130.png" alt="img"></p>
+<p>配置管理员账号密码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100207.png" alt="img"></p>
+<p>配置完成之后就可以开始使用了。</p>
+<h3 id="禁用函数设置"><a href="#禁用函数设置" class="headerlink" title="禁用函数设置"></a>禁用函数设置</h3><p>如果安装时提示<code>shell_exec、exec 函数</code>后面是个叉叉，那么可以在php的配置文件中删除这两个禁用函数。</p>
+<p>如果你使用的是宝塔面板，那么你可以很方便的在php设置里面找到禁用函数，然后点击删除即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327095806.png" alt=""></p>
+<p>如果你使用的不是宝塔面板，那么你就可以找到你的php配置文件，php.ini里面直接搜索函数，然后在<code>disable_functions</code>后面删除这两个函数即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327095924.png" alt=""></p>
+<h2 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h2><p>可以直接去官方Demo站预览：<a href="http://demo.kodcloud.com/#user/login" target="_blank" rel="noopener">http://demo.kodcloud.com/#user/login</a></p>
+<p>安装完成之后首页是这个样子</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327101641.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100341.png" alt=""></p>
+<p>比kodexplorer多了一个管理后台</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100431.png" alt=""></p>
+<p>可以配置第三方存储（目前就只支持这几个）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100512.png" alt=""></p>
+<p>插件中心还是熟悉的那些插件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100558.png" alt=""></p>
+<p>这里不再显示服务器路径</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100640.png" alt=""></p>
+<p>依旧支持离线下载</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100715.png" alt=""></p>
+<p>多用户级别支持</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/upload/picgo/20200327100750.png" alt=""></p>
+<h2 id="体验感受"><a href="#体验感受" class="headerlink" title="体验感受"></a>体验感受</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>可道云的成熟大家都已经体验过，kodexplorer作为服务器文件管理器来说是一款很成熟又好用的程序，kodbox则是走向类似cloudreve的支持外链云存储的云盘程序，并且更易于操作和使用，并且支持桌面和手机客户端。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>其实也算不上缺点，只是kodbox正处于初期的状态，还是有很多的bug，比如我这里无法挂载FTP，还有动画的掉帧卡顿，以及云存储支持的不全面，云存储配置之后无法删除的问题。</p>
+<p>当然，我相信这些问题在不久的将来都能够很好的解决，希望可道云团队可以为我们带来媲美nextcloud并且更易于国人使用的程序，加油！</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://oldblog.kezez.com/170.html>https://oldblog.kezez.com/170.html</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-27T10:20:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月27日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%87%AA%E5%BB%BA%E4%BA%91%E7%9B%98/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>自建云盘</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kodbox/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>kodbox</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://oldblog.kezez.com/170.html&title=Kodbox-重构版可道云的安装与体验 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://oldblog.kezez.com/170.html&title=Kodbox-重构版可道云的安装与体验 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://oldblog.kezez.com/170.html&title=Kodbox-重构版可道云的安装与体验 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+        
+      
+    </div>
+  </section>
+
+<!-- <hr> -->
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/171.html'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>用Layer和jQuery写了一个复制之后版权提醒的弹窗</p>
+                <p class='content'>之前看到handsome分享社区有博主提供了复制版权的代码，复制之后会在剪切板自动添加博主的链接之类的内容，就像在CSDN博客内复制文字一样，会自动添加作者的版权链接。
+我不是说这样的方式不好，...</p>
+              </a>
+            
+            
+              <a class='next' href='/169.html'>
+                <p class='title'>Groupy的入手以及使用体验<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>日常使用最多的就是windows系统，虽说Win可以很方便的多桌面多窗口切换使用，但当很多软件同时使用的时候也是很繁琐的一件事情。
+然后我就发现了Groupy，它采用了浏览器标签的概念，将多个软...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Kodbox-重构版可道云的安装与体验',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#禁用函数设置"><span class="toc-number">1.1.</span> <span class="toc-text">禁用函数设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#界面"><span class="toc-number">2.</span> <span class="toc-text">界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#体验感受"><span class="toc-number">3.</span> <span class="toc-text">体验感受</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">3.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+
+<section class="widget text floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-ad fa-fw" aria-hidden="true"></i><span class='name'>广告[点击广告支持本站]</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- 侧边栏广告 --> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9122002396983323" data-ad-slot="4789856080" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    
+  </div>
+</section>
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文章页脚 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9122002396983323"
+     data-ad-slot="8186175615"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fengye@170601.xyz"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/kaygb"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=29542612"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.kezez.com" target="_blank" rel="noopener">Copyright © 2019-NOW KAYGB</a></p>
+
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        
+          <div><p><a href="https://console.upyun.com/register/?invite=r1FdZxBoH" target="_blank" rel="nofollow"><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/img/20200320214011.png" style="width:50px;"></a></p>
+</div>
+        
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/kaygb/picplus-images/20200620200819093228.png"];
+        if ('false' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/kaygb/blog.kaygb.com@master/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "3HjMsbm2IkLIeJm295rIIdka-gzGzoHsz",
+    appKey: "C2YJo5hhb5vyFucEqJcSGzzJ",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+<script> var _hmt = _hmt || []; (function() { var hm = document.createElement('script'); hm.src = 'https://hm.baidu.com/hm.js?88db320bccd0b54b965150862a65c793'; var s = document.getElementsByTagName('script')[0];  s.parentNode.insertBefore(hm, s); })(); </script> 
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

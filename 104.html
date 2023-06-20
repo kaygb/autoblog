@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>如何使用php进行字符串的md5加密 - 风也雨忆笙</title>
+  
+    <meta name="keywords" content="MD5,MD5加密,php,php加密">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="风也雨忆笙">
+  
+
+  <!-- import meta -->
+  
+    
+      <meta name='theme-color' content='#FFFFFF'>
+    
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.png'>
+  <script data-ad-client='ca-pub-9122002396983323' async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+  <style> @font-face { font-family: 'Fyyys'; src: url('https://cdn.jsdelivr.net/gh/kaygb/blog-images/fonts/YaoSuiXinShouXieTi-2-subfont=fyyys.ttf'); } .post-wrapper { border-bottom: 1px solid #ef577736; } .post-wrapper:hover { border-bottom: 1px solid #ef5777; } .l_main .post{ margin: 0 auto!important; } /*bilibili*/ .bilibili { position: relative; width: 100%; height: 0; padding-bottom: 75%; }
+.bilibili iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } .cover-body  .title{ font-family: Fyyys!important; } .l_header .wrapper .nav-main .title { font-family: Fyyys!important; font-weight:900; font-size: 2rem!important; }
+</style>
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            风也雨忆笙
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cube fa-fw'></i>页面
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/start-page/
+                  
+                  
+                  
+                    id="start-page"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/msg/
+                  
+                  
+                  
+                    id="msg"
+                  >
+                  <i class='fas fa-comment-alt fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/donate/
+                  
+                  
+                  
+                    id="donate"
+                  >
+                  <i class='fas fa-donate fa-fw'></i>捐赠
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cubes fa-fw'></i>站点
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//wiki.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="wikieas1cn"
+                  >
+                  <i class='fab fa-wikipedia-w fa-fw'></i>疯知识
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//zy.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="zyeas1cn"
+                  >
+                  <i class='fas fa-download fa-fw'></i>纸柚网
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.wgb.ink
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:wwwwgbink"
+                  >
+                  <i class='fas fa-dollar-sign fa-fw'></i>旺果帮
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//d.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="deas1cn"
+                  >
+                  <i class='fas fa-link fa-fw'></i>短链密语
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:www170601xyz"
+                  >
+                  <i class='fas fa-fan fa-fw'></i>七六零一
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://pic.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:piceas1cn"
+                  >
+                  <i class='fas fa-image fa-fw'></i>风也图床
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://cloud.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:cloudeas1cn"
+                  >
+                  <i class='fas fa-cloud fa-fw'></i>风也网盘
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://acg.wgb.ink/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:acgwgbink"
+                  >
+                  <i class='fas fa-images fa-fw'></i>随机图片
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-clone fa-fw'></i>项目
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://winds.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:winds170601xyz"
+                  >
+                  WINDS 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://forty.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:forty170601xyz"
+                  >
+                  Forty 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://ease.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:easeeas1cn"
+                  >
+                  EASE 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-microchip fa-fw'></i>管理
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://leancloud-server.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:leancloud-server170601xyz"
+                  >
+                  <i class='fas fa-link fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://status.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:statuseas1cn"
+                  >
+                  <i class='fas fa-server fa-fw'></i>网站监控
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=https://travellings.now.sh/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fas fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="来啊，搜索啊..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>文章
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cube fa-fw'></i>页面
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/links/
+                  
+                  
+                  
+                    id="links"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/start-page/
+                  
+                  
+                  
+                    id="start-page"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/msg/
+                  
+                  
+                  
+                    id="msg"
+                  >
+                  <i class='fas fa-comment-alt fa-fw'></i>留言
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/donate/
+                  
+                  
+                  
+                    id="donate"
+                  >
+                  <i class='fas fa-donate fa-fw'></i>捐赠
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-cubes fa-fw'></i>站点
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//wiki.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="wikieas1cn"
+                  >
+                  <i class='fab fa-wikipedia-w fa-fw'></i>疯知识
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//zy.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="zyeas1cn"
+                  >
+                  <i class='fas fa-download fa-fw'></i>纸柚网
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.wgb.ink
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:wwwwgbink"
+                  >
+                  <i class='fas fa-dollar-sign fa-fw'></i>旺果帮
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=//d.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="deas1cn"
+                  >
+                  <i class='fas fa-link fa-fw'></i>短链密语
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://www.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:www170601xyz"
+                  >
+                  <i class='fas fa-fan fa-fw'></i>七六零一
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://pic.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:piceas1cn"
+                  >
+                  <i class='fas fa-image fa-fw'></i>风也图床
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://cloud.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:cloudeas1cn"
+                  >
+                  <i class='fas fa-cloud fa-fw'></i>风也网盘
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://acg.wgb.ink/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:acgwgbink"
+                  >
+                  <i class='fas fa-images fa-fw'></i>随机图片
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-clone fa-fw'></i>项目
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://winds.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:winds170601xyz"
+                  >
+                  WINDS 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://forty.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:forty170601xyz"
+                  >
+                  Forty 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://ease.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:easeeas1cn"
+                  >
+                  EASE 演示站
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  <i class='fas fa-microchip fa-fw'></i>管理
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://leancloud-server.170601.xyz/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:leancloud-server170601xyz"
+                  >
+                  <i class='fas fa-link fa-fw'></i>评论管理
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=https://status.eas1.cn/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:statuseas1cn"
+                  >
+                  <i class='fas fa-server fa-fw'></i>网站监控
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=https://travellings.now.sh/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="https:travellingsnowsh"
+                  >
+                  <i class='fas fa-paper-plane fa-fw'></i>开往
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/104.html">
+      如何使用php进行字符串的md5加密
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>代码笔记</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年1月12日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          
+        
+      </div>
+    
+  </section>
+  
+
+<!-- <hr> -->
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="MD5是什么？"><a href="#MD5是什么？" class="headerlink" title="MD5是什么？"></a>MD5是什么？</h2><p>MD5是一种信息摘要算法，它可以从一个字符串或一个文件中按照一定的规则生成一个特殊的字符串，并且一个文件所对应的MD5摘要是固定的，当文件内容变化后，其MD5值也会不一样，当然，它的过程是不可逆的，只能进行加密而不能进行解密，常常用来进行数据的验证，有很多的网站提供的资源或者软件都提供了MD5的值，用来验证用户所下载的资源和文件是否被非法篡改。</p>
+<h2 id="PHP-md5-函数"><a href="#PHP-md5-函数" class="headerlink" title="PHP md5()函数"></a>PHP md5()函数</h2><h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">echo</span> md5($str);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h3><p>md5() 函数计算字符串的 MD5 散列。</p>
+<p>md5() 函数使用 RSA 数据安全，包括 MD5 报文摘要算法。</p>
+<p>来自 RFC 1321 的解释 - MD5 报文摘要算法：<em>MD5 报文摘要算法将任意长度的信息作为输入值，并将其换算成一个 128 位长度的”指纹信息”或”报文摘要”值来代表这个输入值，并以换算后的值作为结果。MD5 算法主要是为数字签名应用程序而设计的；在这个数字签名应用程序中，较大的文件将在加密（这里的加密过程是通过在一个密码系统下[如：RSA]的公开密钥下设置私有密钥而完成的）之前以一种安全的方式进行压缩。</em></p>
+<p>如需计算文件的 MD5 散列，请使用 <a href="https://www.runoob.com/php/func-string-md5-file.html" target="_blank" rel="noopener">md5_file()</a> 函数。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5(string,raw)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。规定要计算的字符串。</td>
+</tr>
+<tr>
+<td>raw</td>
+<td>可选。规定十六进制或二进制输出格式：TRUE - 原始 16 字符二进制格式；FALSE - 默认。32 字符十六进制数</td>
+</tr>
+</tbody></table>
+<p>如果成功则返回计算的MD5散列</p>
+<h2 id="MD5加密字符串"><a href="#MD5加密字符串" class="headerlink" title="MD5加密字符串"></a>MD5加密字符串</h2><p>在Ktools在线工具箱提供了md5的加密，源码很简单，通过一个form表单，将输入的值传给<code>$str</code>，如果值不为空，则进行计算，如果为空，则返回：<code>请输入需要加密的内容，将在这里显示结果</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;wrap&quot; class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">    &lt;h2 style&#x3D;&quot;text-align:center;&quot;&gt;在线MD5加密&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;tools&quot;&gt;</span><br><span class="line">        &lt;form id&#x3D;&quot;&quot; action&#x3D;&quot;&quot; method&#x3D;&quot;post&quot; accept-charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">            &lt;style&gt;</span><br><span class="line">                #text&#123;</span><br><span class="line">                    width: 100%;</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;&#x2F;style&gt;</span><br><span class="line">        &lt;!--&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;text&quot; id&#x3D;&quot;text&quot; value&#x3D;&quot;&quot; placeholder&#x3D;&quot;请输入内容&quot;&#x2F;&gt;--&gt;</span><br><span class="line">        &lt;textarea type&#x3D;&quot;text&quot; class&#x3D;&quot;tools&quot; name&#x3D;&quot;text&quot; id&#x3D;&quot;text&quot; value&#x3D;&quot;&quot; placeholder&#x3D;&quot;请输入需要加密的内容&quot;&gt;&lt;&#x2F;textarea&gt;</span><br><span class="line">        &lt;button type&#x3D;&quot;submit&quot; name&#x3D;&quot;sub&quot; class&#x3D;&quot;btn btn-success&quot;&gt;加密&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button type&#x3D;&quot;reset&quot; name&#x3D;&quot;sub&quot; class&#x3D;&quot;btn btn-danger&quot;&gt;重置&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div style&#x3D;&quot;text-align:center;&quot;&gt;</span><br><span class="line">        加密之后：</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;p class&#x3D;&quot;tools&quot; style&#x3D;&quot;color:#f05050&quot;&gt;</span><br><span class="line">        &lt;?php</span><br><span class="line">    $str &#x3D; $_POST[&#39;text&#39;];</span><br><span class="line">    if (!empty($_POST[&#39;text&#39;])) &#123;</span><br><span class="line">        echo md5($str);</span><br><span class="line">        </span><br><span class="line">        exit;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        echo &quot;请输入需要加密的内容，将在这里显示结果&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    ?&gt;</span><br><span class="line">    &lt;&#x2F;p&gt;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>预览地址：<a href="https://tools.kaygb.top/parts/md5.php" target="_blank" rel="noopener">https://tools.kaygb.top/parts/md5.php</a></p>
+<h2 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h2><p>如果你使用gravatar作为头像，那么gravatar所使用的方式就是将邮箱进行MD5加密，然后进行返回，国内可以尝试V2EX的镜像：<code>https://cdn.v2ex.com/gravatar/邮箱md5</code></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://oldblog.kezez.com/104.html>https://oldblog.kezez.com/104.html</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-12T10:25:21+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年1月12日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MD5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>MD5</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MD5%E5%8A%A0%E5%AF%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>MD5加密</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/php/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>php</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/php%E5%8A%A0%E5%AF%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>php加密</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://oldblog.kezez.com/104.html&title=如何使用php进行字符串的md5加密 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://oldblog.kezez.com/104.html&title=如何使用php进行字符串的md5加密 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://oldblog.kezez.com/104.html&title=如何使用php进行字符串的md5加密 - 风也雨忆笙&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+        
+      
+    </div>
+  </section>
+
+<!-- <hr> -->
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/107.html'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【多图】四个月的实习结束了，2020要继续加油啊</p>
+                <p class='content'>　　今天是2020年1月13日，距离离职已经过去了13天，本来以为辞职后可以好好休息一下，每天睡到自然醒，可事实却不是这个样子。真实的情况反而不同，每天熬夜熬到很晚，早晨却不争气的八点就醒了，能...</p>
+              </a>
+            
+            
+              <a class='next' href='/103.html'>
+                <p class='title'>使用Typora编辑器+PicGo图床+OneDrive存储+Snipaste截图工具带来流畅丝滑的同步环境markdown写作体验<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>不少站长都为图床的问题而产生困扰，尤其是在使用markdown进行写作的时候，有关教程的截图需要上传到web图床，然后复制链接，再粘贴到文章，不但浪费时间，而且极为影响写作体验。
+写作环境
+编辑...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '如何使用php进行字符串的md5加密',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MD5是什么？"><span class="toc-number">1.</span> <span class="toc-text">MD5是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-md5-函数"><span class="toc-number">2.</span> <span class="toc-text">PHP md5()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例："><span class="toc-number">2.1.</span> <span class="toc-text">实例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义和用法"><span class="toc-number">2.2.</span> <span class="toc-text">定义和用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">2.3.</span> <span class="toc-text">语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MD5加密字符串"><span class="toc-number">3.</span> <span class="toc-text">MD5加密字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多用法"><span class="toc-number">4.</span> <span class="toc-text">更多用法</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+
+<section class="widget text floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-ad fa-fw" aria-hidden="true"></i><span class='name'>广告[点击广告支持本站]</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- 侧边栏广告 --> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9122002396983323" data-ad-slot="4789856080" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    
+  </div>
+</section>
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文章页脚 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9122002396983323"
+     data-ad-slot="8186175615"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fengye@170601.xyz"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/kaygb"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=29542612"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.kezez.com" target="_blank" rel="noopener">Copyright © 2019-NOW KAYGB</a></p>
+
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        
+          <div><p><a href="https://console.upyun.com/register/?invite=r1FdZxBoH" target="_blank" rel="nofollow"><img src="https://cdn.jsdelivr.net/gh/kaygb/blog-images/img/20200320214011.png" style="width:50px;"></a></p>
+</div>
+        
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/kaygb/picplus-images/20200620200819093228.png"];
+        if ('false' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/kaygb/blog.kaygb.com@master/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "3HjMsbm2IkLIeJm295rIIdka-gzGzoHsz",
+    appKey: "C2YJo5hhb5vyFucEqJcSGzzJ",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+<script> var _hmt = _hmt || []; (function() { var hm = document.createElement('script'); hm.src = 'https://hm.baidu.com/hm.js?88db320bccd0b54b965150862a65c793'; var s = document.getElementsByTagName('script')[0];  s.parentNode.insertBefore(hm, s); })(); </script> 
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
